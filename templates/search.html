@@ -1,0 +1,44 @@
+{% extends "navbar.html" %}
+{% block body %}
+
+{% if s %}
+    
+    <div class="container my-1" style="text-align: center; display: flex;">
+        <div class="row">
+            <div class="col" style="margin-top: 1%; padding: 15px;">
+                <div class="col">
+                    <div class="card" style="width: 350px;">
+                        <img src="/static/song.PNG" class="card-img-top" alt="music">
+                        <div class="card-body">
+                            <h5 class="card-title"><img src="/static/music.png" alt="music" style="width: 30px; margin-right: 10px;">{{s.s_name[0]|upper}}{{s.s_name[1:]}}</h5>
+                            <p class="card-text">Rating | {{s.rating}}<img src="/static/star.png" alt="star" style="width: 30px;"></p>
+                            <a href="/lyrics/{{s.s_id}}" class="btn btn-primary">Read Lyrics</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% else %}
+<div class="container my-3" style="text-align: center; display: flex;">
+    <div class="row">
+        {% for gana in l %}
+        <div class="col" style="margin-top: 1%; padding: 15px;">
+            <div class="col">
+                <div class="card h-100" style="width: 350px;">
+                    <img src="/static/song.PNG" class="card-img-top" alt="music">
+                    <div class="card-body">
+                        <h5 class="card-title"><img src="/static/music.png" alt="music" style="width: 30px; margin-right: 20px;">{{gana.s_name}}</h5>
+                        <p class="card-text">Rating | {{gana.rating}}<img src="/static/star.png" alt="star" style="width: 30px;"></p>
+                        <a href="/lyrics/{{gana.s_id}}" class="btn btn-primary">Read Lyrics</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %} 
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

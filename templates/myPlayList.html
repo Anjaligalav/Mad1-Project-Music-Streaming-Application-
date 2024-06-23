@@ -1,0 +1,22 @@
+{% extends "navbar.html" %}
+{% block body %}
+<h1>{{play.name}}</h1>
+<div class="container my-4" style="text-align: center; display: flex;">
+  <div class="row">
+      {% for i in song_list %}
+      <div class="col" style="margin-top: 1%; padding: 15px;">
+        <div class="col">
+          <div class="card h-100" style="width: 350px;">
+            <img src="/static/song.PNG" class="card-img-top" alt="music">
+            <div class="card-body">
+              <h5 class="card-title"><img src="/static/music.png" alt="music" style="width: 30px; margin-right: 10px;">{{i.s_name[0]|upper}}{{i.s_name[1:]}}</h5>
+              <p class="card-text">Rating | {{i.rating}}<img src="/static/star.png" alt="star" style="width: 30px;"></p>
+              <a href="/lyrics/{{i.s_id}}" class="btn btn-primary">Play Song</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %} 
+  </div>
+</div>
+{% endblock %}

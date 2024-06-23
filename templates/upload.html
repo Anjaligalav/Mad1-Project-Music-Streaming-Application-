@@ -1,0 +1,54 @@
+{% extends "navbar.html" %}
+{% block body %}
+
+<div class="container">
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>{{message}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+</div>
+<style>
+.upload:hover{
+  background-color: rgb(212, 220, 229);
+}
+
+</style>
+<a href="/my_dashboard/{{user.id}}" class="btn btn-info btn-lg" style="margin-top: 2%;">My DashBoard</a>
+
+
+<div class="col-lg-6 mx-auto" style="margin-top: 2%; background-image: url('/static/M2.png');">
+  <h1 style="text-align: center;">Upload your song.</h1>
+  <form enctype="multipart/form-data" action="/upload/{{user.id}}" method="post" class="lead mb-4" style="border: solid slategrey; border-radius: 3%; padding: 10%;">
+      <label for="sname">Song Name</label><br><br>
+      <input class="upload" type="text" name="sName" id="sName"><br><br>
+      <p><label for="date">Release Date</label></p>
+      <p><input class="upload" type="text" name="date" id="date"></p>
+      <p><label for="maker">Asign_to_Album</label></p>
+      <p><input class="upload" type="text" name="album_name" id="maker"></p>
+      <h4>OR</h4>
+      <p><label for="aName"></label>New_Album_name</p>
+      <p><input class="upload" type="text" name="aName" id="aName"></p>
+      <p><label for="lyrics">Lyrics</label></p>
+      <p><input class="upload" type="text" name="lyrics" id="lyrics"></p>
+      <p><label for="artist">Artist Name</label></p>
+      <p><input class="upload" type="text" name="artist" id="artist"></p>
+      <p><label for="genre">Genre</label></p>
+      <p><input class="upload" type="text" name="genre" id="genre"></p>
+      <div>
+        <label for="song" class="upload">Select an MP3 File</label>
+        <input type="file" name="songmp3" accept=".mp3" required class="form-control">
+      </div class="mb-3">
+      <button type="submit" class="btn btn-outline-secondary">Upload</button>
+  </form>
+
+</div>
+   
+
+    
+{% endblock %}

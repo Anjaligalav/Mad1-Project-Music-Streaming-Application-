@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+ 
+
+<div class="container">
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>{{message}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+</div>
+<style>
+  *{
+    color: white;
+  }
+</style>
+<img src="/static/Sign up-user.png" alt="user" style="width: 30%; position: relative; left: 200px; top: 100px;">
+<div class="col-lg-3 mx-auto" style="position: relative; bottom: 350px;left: 200px;">
+
+    <h3 style="border: solid white; border-radius: 3%; padding: 5%;">Music Streaming app</h3>
+        <h1 class="lh">User Sign up<svg xmlns="http://www.w3.org/2000/svg" width="10%" height="10%" fill="currentColor" class="bi bi-person-fill-lock" viewBox="0 0 16 16">
+          <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-9 8c0 1 1 1 1 1h5v-1a1.9 1.9 0 0 1 .01-.2 4.49 4.49 0 0 1 1.534-3.693C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Zm7 0a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-2Zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1Z"/>
+        </svg></h1>
+            <form method="post" action="/sign_up/user" class="lead mb-4" style="border: solid white; border-radius: 3%; padding: 5%; text-align: center;">
+                <label for="U_name">Name</label><br>
+                <p><input type="text" name="username" id="U_name"  style="color: black;" required></p>
+                <p><label for="email">Email</label></p>
+                <p><input type="text" name="email" id="email"  style="color: black;" required></p>
+                <p><label for="U_pass">Password</label></p>
+                <p><input type="password" name="password" id="U_pass" style="color: black;" required></p>
+                <button class="btn btn-primary" type="submit">sign up</button>
+            </form>
+            <p>Already a member?<!-- Login modal -->
+<button type="button"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Login
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: black;">Login</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/login/user" method="POST">
+          <div class="mb-3">
+            <label for="username" style="color: black;">Username</label>
+            <input type="name" name="username" id="username" style="color: black;" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="password" style="color: black;">Password</label>
+            <input type="password" name="password" style="color: black;" id="password">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+{% endblock %}

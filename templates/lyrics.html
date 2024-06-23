@@ -1,0 +1,50 @@
+{% extends "navbar.html" %}
+{% block body %}
+
+<style>
+.font{
+  font-size: 4rem;
+  color: rgb(43, 122, 226);
+}
+</style>
+
+
+
+<img src="/static/Happy girl wearing headphones.jpg" alt="girl" style="width: 35%; position: relative; left: 900px; top: 100px;">
+
+<div class="container col-8" style="position: relative;left: 800px; top: 100px; ">
+<h1 class="font"><strong>Play song</strong></h1>
+<br>
+<audio controls>
+  <source src="{{ url_for('playSong',song_id =song.s_id) }}" type="audio/mpeg">
+
+</audio>
+</div>
+
+<div class="col-lg-7 mx-auto" style="border: solid slategrey; border-radius: 3%; padding: 5%; position: relative; bottom: 400px; right: 200px;">
+  <div class="btn-group"> 
+  <h2 style="margin-right: 5%;">{{song.s_name[0]|upper}}{{song.s_name[1:]}}</h2>
+    
+    <button type="button" class="btn btn-info dropdown-toggle" style="margin:0 0 1% 0; margin-left: 200px;"   data-bs-toggle="dropdown" aria-expanded="false">
+      Rating
+    </button>
+    <ul class="dropdown-menu">
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="/rate/{{song.s_id}}/1">1</a></li>
+      <li><a class="dropdown-item" href="/rate/{{song.s_id}}/2">2</a></li>
+      <li><a class="dropdown-item" href="/rate/{{song.s_id}}/3">3</a></li>
+      
+      <li><a class="dropdown-item" href="/rate/{{song.s_id}}/4">4</a></li>
+      <li><a class="dropdown-item" href="/rate/{{song.s_id}}/5">5</a></li>
+    </ul>
+  </div>
+  <button style="margin-left: 30px;">{{song.rating}}</button>{{star}}
+  <p>🎙️{{album.artist[0]|upper}}{{album.artist[1:]}} | {{song.date}}</p>
+      <p class="lead mb-4" style="border: solid slategrey; border-radius: 3%; padding: 5%; margin-top: 3%;">{{song.lyrics}}</p>
+      
+</div>
+
+  
+
+{% endblock %}
+

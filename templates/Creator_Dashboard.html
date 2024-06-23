@@ -1,0 +1,139 @@
+{% extends "navbar.html" %}
+{% block body %}
+<style>
+  .col-lg-3 {
+    border: 3px solid slategrey;
+    border-radius: 4%;
+    margin: 4%;
+    padding: 5%;
+  }
+
+  .col-lg-3 {
+    background-image: url('/static/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  .row:hover {
+    background-color: white;
+  }
+
+  .row {
+    background-color: rgb(212, 220, 229);
+  }
+
+  h3 {
+    color: white;
+  }
+</style>
+
+
+<div class="container">
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>{{message}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+</div>
+
+
+
+<div class="container" style="margin-top: 3%;">
+  <h1>{{user.username}}'s DashBoard</h1>
+  <div class="row"
+    style="border: 3px solid rgb(71, 103, 134); padding: auto; border-radius: 2%;background-color: rgb(212, 220, 229);">
+    <div class="col-lg-3">
+      <span style="display: inline;  font-size: large; color: white;"><strong>Total Songs Uploaded</strong></span>
+      <h3 style="text-align: center;">{{total_songs}}</h3>
+    </div>
+    <div class="col-lg-3">
+      <span style="display: inline;  font-size: large; color: white"><strong>Total Number Of Albums </strong></span>
+      <h3 style="text-align: center;">{{total_album}}</h3>
+    </div>
+    <div class="col-lg-3">
+      <span style="display: inline;  font-size: large; color: white"><strong>Avrage Rating</strong></span>
+      <h3 style="text-align: center;">{{avg}}</h3>
+    </div>
+  </div>
+</div>
+
+
+<div class="container" style="margin-top: 3%;">
+  <h1>Your Uploads!</h1>
+  <div style="display: flex;">
+    <!-- button type="button" class="btn btn-outline-info" style="position: relative;left: 70%;"><a href="/upload/{{user.id}}" class="btn btn-outline-secondary"><strong>Albums info</strong></a></button>  < -->
+    <!-- Button trigger modal -->
+    <button class="btn btn-outline-info" style="position: relative;left: 70%;" data-bs-toggle="modal"
+      data-bs-target="#exampleModal">
+      <strong>Albums info</strong>
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">All Albums</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            {% for al in album %}
+            <div class="card" style="margin-top: 1%; border: 3px solid slategrey; color: rgb(71, 103, 134);">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-8">
+                    <h5 class="card-title">{{al.a_name[0]|upper}}{{al.a_name[1:]}}</h5>
+                  </div>
+
+                  <div class="col-4 text-right">
+                    <button class="btn btn-danger mr-2"><a href="/c_a_delete/{{al.a_id}}" class="btn btn-danger">Delete
+                        <img src="/static/delete.png" alt="delete" style="width: 30px;"></a></button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-outline-info" style=" margin-left:72%;"><a href="/upload/{{user.id}}"
+        class="btn btn-outline-info"><strong>Upload a song</strong></a></button>
+
+  </div>
+  {% for gana in song %}
+  <div class="card" style="margin-top: 1%; border: 3px solid slategrey; color: rgb(71, 103, 134);">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-8">
+          <h5 class="card-title">{{gana.s_name[0]|upper}}{{gana.s_name[1:]}} </h5>
+        </div>
+        <div class="col-4 text-right">
+          <button class="btn btn-primary mr-2"><a href="/c_edit/{{gana.s_id}}" class="btn btn-primary">Edit ✏
+            </a></button>
+          <button class="btn btn-danger mr-2"><a href="/c_delete/{{gana.s_id}}" class="btn btn-danger">Delete <img
+                src="/static/delete.png" alt="delete" style="width: 30px;"></a></button>
+          <button class="btn btn-info mr-2"><a href="/lyrics/{{gana.s_id}}" class="btn btn-info">View <img
+                src="/static/view.png" alt="view" style="width: 30px;"></a></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+
+
+
+{% endblock %}

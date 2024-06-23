@@ -1,0 +1,80 @@
+{% extends "navbar.html" %}
+{% block body %}
+<style>
+  img{
+    width: 15%;
+  }
+  body{
+    background-image: url('/static/B2.jpg'); 
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-size: cover;
+  }
+</style>
+<div class="container" style="border: solid; margin-top: 5%; height: 400px; width: 400px; padding: 50px;">
+  <h1>Register as a creator</h1><img src="/static/creator.png" alt=""><br>
+  <p>create new songs Albums and much more.</p>
+  <!-- Role chane as creator -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Register
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Register_as_a_creator</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/role_Change" method="POST">
+          <div class="mb-3">
+            <label for="username">Username</label>
+            <input type="name" name="username" id="username" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="role">New_Role</label>
+            <input type="text" name="role" id="role">
+          </div>
+          <button type="submit" class="btn btn-primary">register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- login -->
+<h4>Already a creator?</h4><button type="button" style="margin-left: 70%;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+  Login
+</button>
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel2">Login as a Creator</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/role_Change" method="POST">
+          <div class="mb-3">
+            <label for="username">Username</label>
+            <input type="name" name="username" id="username" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="role">New_Role</label>
+            <input type="text" name="role" id="role">
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+{% endblock %}
+
+      
+      
+    

@@ -1,0 +1,27 @@
+{% extends "navbar.html" %}
+{% block body %}
+<div class="col-lg-6 mx-auto" style="margin-top: 3%;">
+<form enctype="multipart/form-data"  action="/c_edit/{{song.s_id}}" method="post" class="lead mb-4" style="border: solid slategrey; border-radius: 3%; padding: 10%;">
+    <label for="sname">Song Name</label><br><br>
+    <input class="upload" type="text" name="sName" id="sName" value="{{song.s_name}}"><br><br>
+    <p><label for="date">Release Date</label></p>
+    <p><input class="upload" type="text" name="date" id="date" value="{{song.date}}"></p>
+    <p><label for="maker">Album id</label></p>
+    <p><input class="upload" type="text" name="album_id" id="maker" value="{{song.album_id}}"></p>
+    <p><label for="lyrics">Lyrics</label></p>
+    <p><input class="upload" type="text" name="lyrics" id="lyrics" value="{{song.lyrics}}"></p>
+    <p><label for="aName"></label>Album Name</p>
+    <p><input type="text" name="aName" id="aName" value="{{album.a_name}}"></p>
+    <p><label for="artist">Artist Name</label></p>
+    <p><input type="text" name="artist" id="artist" value="{{album.artist}}"></p>
+    <p><label for="genre">Genre</label></p>
+    <p><input type="text" name="genre" id="genre" value="{{album.genre}}"></p>
+    <div>
+        <label for="song" class="upload">Select an MP3 File</label>
+        <input type="file" name="songmp3" accept=".mp3" required class="form-control" value="song.songMP3">
+      </div class="mb-3">
+    <button type="submit" class="btn btn-primary">Save Chenges</button>
+</form>
+</div>
+
+{% endblock %}

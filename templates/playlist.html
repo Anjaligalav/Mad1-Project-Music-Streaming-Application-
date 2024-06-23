@@ -1,0 +1,20 @@
+{% extends "navbar.html" %}
+{% block body %}
+<img src="/static/Playlist-pana.png" alt="girl" style=" width:40%; position: relative; top: 50px; left: 700px;">
+<div class="container my-4" style="position: relative; bottom: 500px;">
+
+<form action="/playlist" method="post" style="font-size: 30px;">
+    <label for="new">Create Playlist:</label>
+    <input type="text" name="p_name" id="new" placeholder="Name of playlist" required>
+    {% for gana in songs %}
+        <p><label for="songname">{{gana.s_name[0]|upper}}{{gana.s_name[1:]}} </label>
+        <input type="checkbox" name="songname" id="songname" value="{{gana.s_id}}" style="width: 25px; 
+        height: 25px;"></p>
+    {% endfor %}
+    <button type="submit">Add</button>
+</form>
+
+<!-- <button style="text-align: center;" ><a href="/playlist" class="btn btn-primary">Add</a></button> -->
+</div>
+
+{% endblock %}

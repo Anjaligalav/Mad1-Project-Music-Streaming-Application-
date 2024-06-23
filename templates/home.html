@@ -1,0 +1,39 @@
+{% extends "navbar.html" %}
+
+{% block body %}
+<div class="container">
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>{{message}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+</div>
+<button type="button" class="btn btn-outline-info" style="margin-left: 80%; margin-top: 10px;"><a href="/playlist"
+    class="btn btn-dark">Create New Play List</a></button>
+<h1 style="text-align: center;">🎶Welcome To Music Streaming Application🎶</h1>
+<div class="container my-4" style="text-align: center; display: flex;">
+  <div class="row">
+    {% for gana in song[0:3] %}
+    <div class="col" style="margin-top: 1%; padding: 15px;">
+      <div class="col">
+        <div class="card h-100">
+          <img src="/static/song.PNG" class="card-img-top" alt="music">
+          <div class="card-body">
+            <h5 class="card-title"><img src="/static/music.png" alt="music"
+                style="width: 30px; margin-right: 10px;">{{gana.s_name[0]|upper}}{{gana.s_name[1:]}} </h5>
+            <p class="card-text">Rating | {{gana.rating}}<img src="/static/star.png" alt="star" style="width: 30px;">
+            </p>
+            <a href="/lyrics/{{gana.s_id}}" class="btn btn-primary">Play Song</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
