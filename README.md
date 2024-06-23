@@ -2,7 +2,7 @@
 
 I have developed this application as part of my coursework for Modern Application Development-1 during my pursuit of a Bachelor's degree in Data Science and Programming.
 
-Hello Welcome to "ReadMe", I am Anjali Galav(22f3002299).
+Hello Welcome to "ReadMe", I am Anjali Galav.
 
 
 ---------------- Software specifications for the web app ----------------
